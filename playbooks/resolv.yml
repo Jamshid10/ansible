@@ -1,0 +1,10 @@
+---
+- name: configure files on all servers
+  hosts: all
+  remote_user: ansible
+  become: yes
+
+  - name: configure resolv.conf
+    template:
+      src: /ansible/templates/resolv.conf.j2
+      dest: /etc/resolv.conf

@@ -1,0 +1,17 @@
+---
+- name: install initial packages on all servers
+  hosts: web
+  remote_user: ansible
+  become: yes
+
+  tasks:
+  - name: install all initial packages
+    yum:
+      name: "{{ item }}"
+      state: latest
+    with_items:
+      - man
+      - man-pages
+      - mlocate
+      - vim
+      - bind-utils
